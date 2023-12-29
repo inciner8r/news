@@ -9,6 +9,7 @@ import { Col, Row } from "react-bootstrap";
 import { header } from "../../config/config";
 import { endpointPath } from "../../config/api";
 import { Container, Header, card } from "./index";
+import { cache } from "react";
 
 function News(props) {
   const { newscategory, country } = props;
@@ -25,11 +26,21 @@ function News(props) {
 
   const updatenews = async () => {
     try {
-      const response = await axios.get(endpointPath(country, category));
-      setLoading(true);
-      const parsedData = response.data;
-      setArticles(parsedData.articles);
       setLoading(false);
+
+      // Check if data is present in the cache
+      const cachedData = localStorage.getItem("cachedData");
+      if (cachedData) {
+        setArticles(JSON.parse(cachedData));
+      }
+      const response = await axios.get(endpointPath(country, category));
+      if (response.status === 200) {
+        const parsedData = response.data;
+        setArticles(parsedData.articles);
+        localStorage.setItem("cachedData", JSON.stringify(parsedData.articles));
+      } else {
+        console.error("Error fetching data:", response.statusText);
+      }
     } catch (error) {
       console.error(error);
     }
