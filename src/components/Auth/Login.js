@@ -1,6 +1,8 @@
+// src/components/Auth/Login.js
 import React, { useState } from "react";
 import { auth, googleProvider } from "../../firebase";
 import "../../components/Auth/authStyles.css";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,23 +35,25 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={handleGoogleLogin}>Login with Google</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className="form-container">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleGoogleLogin}>Login with Google</button>
+        {error && <p className="error-message">{error}</p>}
+      </div>
     </div>
   );
 };
