@@ -35,25 +35,24 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="form-container">
       <h2>Login</h2>
-      <div className="form-container">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={handleGoogleLogin}>Login with Google</button>
-        {error && <p className="error-message">{error}</p>}
-      </div>
+
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleGoogleLogin}>Login with Google</button>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };

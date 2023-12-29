@@ -8,6 +8,7 @@ import Search from "./components/Search/Search";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import Logout from "./components/Auth/Logout";
+import "./App.css";
 
 const App = () => {
   // const [token, settoken] = useState("");
@@ -21,14 +22,13 @@ const App = () => {
 
   return (
     <div>
-      <h1>React News App</h1>
+      <h1 className="head">React News App</h1>
       {!logged && (
-        <>
+        <div className="main-div">
           <Register />
           <Login />
-        </>
+        </div>
       )}
-      <Logout />
       {logged && (
         <>
           <Router>
@@ -50,6 +50,7 @@ const App = () => {
               ))}
               <Route path="/search/:query" element={<Search />} />
             </Routes>
+            <Logout />
           </Router>
         </>
       )}

@@ -1,0 +1,12 @@
+.main-div{
+    padding-top:12rem;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.head{
+    text-align: center;
+    color: antiquewhite;
+    padding-top: 6rem;
+    font-size: 120px;
+}
